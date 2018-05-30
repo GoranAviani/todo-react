@@ -89,7 +89,30 @@ change how custom methods are defined = custom method into property with arrow f
 /* every custom function must be defined like this to have access to "this" */
 addTodo = event => {
       if (event.key === 'Enter'){
-        console.log(this.todoInput.current.value);
+        const userTodoInput = (this.todoInput.current.value);
+
+
+
+
+        this.setState((prevState, props) => {
+            let todosPreviousState = prevState.todos;
+
+            todosPreviousState.push({
+                id:4,
+                title:userTodoInput,
+                completed: false
+            })
+
+          return {
+                /*todos are being updated/replaced with  todosPreviousState*/
+            todos: todosPreviousState,
+
+          };
+        });
+
+
+
+
       }
 }
 
