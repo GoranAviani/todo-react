@@ -23,7 +23,13 @@ class App extends Component {
                         <input type="checkbox"/>
                         <div className="todo-item-label">{x.title}</div>
                     </div>
-                    <div className="remove-item">
+
+                    <div className="remove-item" onClick = {(event) => this.deleteTodo(indeks)}>
+
+                        { /*<div className="remove-item" onClick = {this.deleteTodo(indeks)}>
+                        this was called right when react loaded. Needed to use (event),
+                        tj fun that takes the event and refers it to method deleteTodo with parametar indeks
+                        */}
                         &times;
                     </div>
                 </div>
@@ -100,7 +106,8 @@ addTodo = event => {
 
         this.setState((prevState, props) => {
             let todosPreviousState = prevState.todos;
-            let idTodo = prevState.idTodo +1;
+            let idTodo = prevState.idTodo + 1;
+            console.log(idTodo)
 
             todosPreviousState.push({
                 id:idTodo,
@@ -109,15 +116,35 @@ addTodo = event => {
             });
 
           return {
-                /*todos are being updated/replaced with  todosPreviousState*/
-            todos: todosPreviousState,
-
+                /*todos are being updated/replaced with  todosPreviousState
+                 todos: todosPreviousState,*/
+                todosPreviousState, idTodo
           };
         });
 /*put todoInput field to after it is showned''*/
 this.todoInput.current.value ='';
       }
 }
+
+
+deleteTodo = (indeks) =>{
+    console.log("deleting")
+    console.log(indeks)
+
+        this.setState((prevState, props) => {
+            let todosPreviousStateDel = prevState.todos;
+
+            todosPreviousStateDel.splice(indeks, 1);
+
+            return { todosPreviousStateDel };
+        });
+
+
+
+
+
+}
+
 
 
 
