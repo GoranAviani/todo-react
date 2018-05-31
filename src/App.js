@@ -59,6 +59,8 @@ todoInput = React.createRef();
 
 
 state = {
+
+    idTodo: 4,
     todos: [
         {
             'id':1,
@@ -91,14 +93,12 @@ addTodo = event => {
       if (event.key === 'Enter'){
         const userTodoInput = (this.todoInput.current.value);
 
-
-
-
         this.setState((prevState, props) => {
             let todosPreviousState = prevState.todos;
+            let idTodo = prevState.idTodo +1;
 
             todosPreviousState.push({
-                id:4,
+                id:idTodo,
                 title:userTodoInput,
                 completed: false
             })
@@ -109,10 +109,6 @@ addTodo = event => {
 
           };
         });
-
-
-
-
       }
 }
 
