@@ -93,6 +93,11 @@ addTodo = event => {
       if (event.key === 'Enter'){
         const userTodoInput = (this.todoInput.current.value);
 
+        /*if input is none dont add it*/
+        if(userTodoInput.trim().length === 0){
+            return;
+        }
+
         this.setState((prevState, props) => {
             let todosPreviousState = prevState.todos;
             let idTodo = prevState.idTodo +1;
@@ -101,7 +106,7 @@ addTodo = event => {
                 id:idTodo,
                 title:userTodoInput,
                 completed: false
-            })
+            });
 
           return {
                 /*todos are being updated/replaced with  todosPreviousState*/
@@ -109,8 +114,11 @@ addTodo = event => {
 
           };
         });
+/*put todoInput field to after it is showned''*/
+this.todoInput.current.value ='';
       }
 }
+
 
 
 
