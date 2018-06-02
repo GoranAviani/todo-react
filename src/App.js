@@ -138,11 +138,6 @@ deleteTodo = (indeks) =>{
 
             return { todosPreviousStateDel };
         });
-
-
-
-
-
 }
 
 
